@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View 2</title>
+    <!-- Import library a frame -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="../../dist/aframe-event-set-component.min.js"></script>
+    <script src="../../dist/aframe-href-component.js"></script>
+    <script src="../../dist/aframe-gif-shader.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="sky" src="../../asset/img/candi5.jpg" />
+            <img id="arrow" src="../../asset/img/arrow.png" />
+        </a-assets>
+
+        <a-sky src="#sky" rotation="5 -90 0"></a-sky>
+
+        <!-- Front Arrow -->
+        <a-image src="#arrow" height=".85" width=".85" material="opacity: 1" position=".2 0.7 1.4" rotation="50 -5 90"
+            look-at="#cursor" link="href: candi-3.html"
+            animation__position="property: position; to: .2 0.8 1.4; loop: true; dur: 1000;">
+        </a-image>
+
+        <!-- Left Arrow -->
+        <a-image src="#arrow" height=".85" width=".85" material="opacity: 1" position="-3 0.7 4.1" rotation="90 0 180"
+            look-at="#cursor" link="href: candi-1.html"
+            animation__position="property: position; to: -3.2 0.7 4.1; loop: true; dur: 1000;">
+        </a-image>
+
+        <a-entity position="0 1.8 4">
+            <a-camera id="camera" look-controls="" wasd-controls-enabled="false" camera="active: true"
+                rotation="-1.3750987083139854 -3.0939720937064483 0" position="0 0 0">
+                <a-cursor id="cursor" cursor="fuse: true; fuseTimeout: 1500; maxDistance: 30"
+                    geometry="primitive: ring; radiusInner: 0.021; radiusOuter: 0.035"
+                    material="color: #00FFFF; shader: flat" position="0 0 -1"
+                    animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+                    animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
+                    animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1">
+                </a-cursor>
+            </a-camera>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>

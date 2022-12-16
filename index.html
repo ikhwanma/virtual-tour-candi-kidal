@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Tour Candi Kidal</title>
+    <!-- Import library a frame -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="./dist/aframe-event-set-component.min.js"></script>
+    <script src="./dist/aframe-href-component.js"></script>
+    <script src="./dist/aframe-gif-shader.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="sky" src="./asset/img/candi1.jpg" />
+            <img id="door" src="./asset/img/door.png" />
+            <img id="circle" src="./asset/img/circle.png" />
+            <img id="welcome" src="./asset/img/welcome.png" />
+        </a-assets>
+
+        <a-sky src="#sky" rotation="1 -90 0"></a-sky>
+
+        <a-image id="elmo" geometry="primitive: plane" material="src: ./asset/img/speaker.png"
+            sound="src: url(./asset/sound/welcome.mp3); on: click; volume: 3" scale="0.8 0.8 0.1" position="3.3 4 -1.9"
+            animation__scale="property: scale; to: 0.9 0.9 0.1; loop: true; dur: 1000;"></a-image>
+
+        <!-- Welcome Image -->
+        <a-image src="#welcome" height="2" width="7" material="opacity: 1" position="-.5 4 -2" rotation="0 0 0"
+            look-at="#cursor">
+        </a-image>
+
+        <!-- Door Enterance Icon -->
+        <a-image src="#circle" height=".85" width=".85" material="opacity: 1" position="-.4 1 -2" rotation="0 0 0"
+            animation__height="property: height; to: 0.95; loop: true; dur: 1000;"
+            animation__width="property: width; to: 0.95; loop: true; dur: 1000;">
+        </a-image>
+
+        <a-image src="#door" height=".6" width=".6" material="opacity: 1" position="-.4 1 -1.9" rotation="0 0 0"
+            look-at="#cursor" link="href: parking-area.html">
+        </a-image>
+
+        <a-entity position="0 1.8 4">
+            <a-camera id="camera" look-controls="" wasd-controls-enabled="false" camera="active: true"
+                rotation="-1.3750987083139854 -3.0939720937064483 0" position="0 0 0">
+                <a-cursor id="cursor" cursor="fuse: true; fuseTimeout: 1500; maxDistance: 30"
+                    geometry="primitive: ring; radiusInner: 0.021; radiusOuter: 0.035"
+                    material="color: #00FFFF; shader: flat" position="0 0 -1"
+                    animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+                    animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
+                    animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1">
+                </a-cursor>
+            </a-camera>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
